@@ -49,6 +49,10 @@ task :rsync => %w[rsync:stage] do
 end
 
 namespace :rsync do
+  # hack for cap rsync to work with cap3
+  task :set_current_revision do
+  end
+
   task :hook_scm do
     Rake::Task.define_task("#{scm}:check") do
       invoke "rsync:check" 
